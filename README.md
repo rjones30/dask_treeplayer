@@ -5,7 +5,7 @@ The ROOT (root.cern.ch) community has mostly completed the transition away from 
 
 This module provides just that, based on the concurrent futures API provided by the python dask.distributed package. The primary goal was to preserve the familiar client interface of TTreePlayer in pyroot, so that existing TSelector code would run WITHOUT MODIFICATION within a dask_treeplayer session context, with the same behaviors and side effects as if the same TSelector were run on a PROOF cluster.
 
-To use this module, just copy dask_treeplayer.py into the PYTHONPATH that also incldues the pyroot libraries needed to import ROOT. One simple solution is just to place it in the local ROOT $ROOTSYS/lib directory. This ensures that any custom configuration applied to the header of dask_treeplayer.py during installation is associated with the build of ROOT on the local platform that it is designed to work with.
+To use this module, just copy dask_treeplayer.py into the PYTHONPATH that also incldues the pyroot libraries needed to import ROOT. One simple solution is just to place it in the local ROOT $ROOTSYS/lib directory. This ensures that any custom configuration applied to the header of dask_treeplayer.py during installation is permanently associated with the build of ROOT on the local platform that it is configured to work with.
 
 ## Quick start
 Place a copy of dask_treeplayer.py in your $ROOTSYS/lib directory, or somewhere else in your PYTHONPATH that also contains $ROOTSYS/lib. Open this copy of dask_treeplayer.py in a text editor and look at the values assigned to the following global configuration constants. 
