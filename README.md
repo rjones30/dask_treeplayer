@@ -1,2 +1,4 @@
 # dask_treeplayer
 pyroot replacement for ROOT.gProof to allow parallel processing of compiled C++ TSelectors on a cluster
+
+The ROOT (root.cern.ch) community has mostly completed the transition away from compiled user C++ classes to the use of RDataFrames to analyze data stored in ROOT trees. However, some of us are left with a collection of various TSelectors that make use of certain efficient analysis patterms which are difficult or impossible to recast in terms of elementary RDataFrame transformations. Configuration and operation of a PROOF cluster was fragile and error-prone, but it worked well once it was set up and running. Now that the ROOT developers have discontinued support for PROOF clusters, an alternative is needed that provides the same functionality using a more modern remote execution framework. This project provides just that, based on the dask futures API provided by the python dask module.
