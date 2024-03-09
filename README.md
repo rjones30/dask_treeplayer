@@ -26,7 +26,7 @@ python3 = "/usr/bin/python3"
 Many of these will work in your environment without changes, but some customization is usually needed. For example, add whatever commandline options to the ssh string that are necessary to make password-less connections to your local cluster from your user account. The daskdir will be created at the start of a new dask_treeplayer session to contain log files and automatically generated scripts that facilitate the dask cluster communications. In case of errors, the logs in that directory may be useful to discover what went wrong with the execution of the user TSelector on the remote workers.
 
 ## Use
-It is assumed that you are already familiar with ROOT trees, and have a TSelector that was built against an existing tree that you want to run in parallel as you would on a PROOF cluster. Start an interactive python3 session and import dask_treeplayer to make sure that all of the required dependencies are present and visible in your PYTHOBNPATH. Execute the following command for documentation on the features of dask_treeplayer, including an example pyroot session illustrating its use.
+It is assumed that you are already familiar with ROOT trees, and have a TSelector that was built against an existing tree that you want to execute in parallel using TChain::Process, as you would on a PROOF cluster. Start an interactive python3 session and import dask_treeplayer to make sure that all of the required dependencies are present and visible in your PYTHOBNPATH. Execute the following command for documentation on the features of dask_treeplayer, including an example pyroot session illustrating its use.
 ```
 $ pydoc3 dask_treeplayer
 ```
