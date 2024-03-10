@@ -58,6 +58,8 @@ import ROOT
 import dask
 import dask.distributed
 
+dask.config.set({"distributed.comm.timeouts.connect": "120s"})
+
 client = 0
 
 class session:
