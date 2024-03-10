@@ -44,6 +44,7 @@ import re
 ssh = "ssh"
 workdir = os.getcwd()
 daskdir = f"{workdir}/dask-worker-space"
+dask_worker_comm_timeout = 300 # seconds
 rootlib = '/'.join(__file__.split('/')[:-1])
 os.environ['LD_LIBRARY_PATH'] = f"{rootlib}:{os.environ['LD_LIBRARY_PATH']}"
 os.environ['PYTHONPATH'] = f"{rootlib}:{os.environ['PYTHONPATH']}"
@@ -58,7 +59,7 @@ import ROOT
 import dask
 import dask.distributed
 
-dask.config.set({"distributed.comm.timeouts.connect": "120s"})
+dask.config.set({"distributed.comm.timeouts.connect": f"{dask_worker_comm_timeout}s"})
 
 client = 0
 
@@ -165,6 +166,8 @@ class session:
       workscript.write("import cloudpickle as pickle\n")
       workscript.write("import ROOT\n")
       workscript.write("\n")
+      workscript.write("import dask\n")
+      workscript.write(f"dask.config.set({{\"distributed.comm.timeouts.connect\": f\"{dask_worker_comm_timeout}s\"}})\n")
       workscript.write("from distributed.cli.dask_worker import go\n")
       workscript.write("\n")
       workscript.write(f"input_chain = ROOT.TChain('{name}', '{title}')\n")
@@ -198,6 +201,8 @@ class session:
       workscript.write("import cloudpickle as pickle\n")
       workscript.write("import ROOT\n")
       workscript.write("\n")
+      workscript.write("import dask\n")
+      workscript.write(f"dask.config.set({{\"distributed.comm.timeouts.connect\": f\"{dask_worker_comm_timeout}s\"}})\n")
       workscript.write("from distributed.cli.dask_scheduler import go\n")
       workscript.write("\n")
       workscript.write(f"input_chain = ROOT.TChain('{name}', '{title}')\n")
